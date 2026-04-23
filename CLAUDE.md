@@ -7,7 +7,7 @@ Public Claude Code plugin marketplace owned by Zoran Spirkovski. Houses skills �
 ## Workspaces
 
 - `skill-maintenance/`: edit existing skills, scaffold new ones, version bumps, and implementation of GitHub issues.
-- `van-clief-wiki/`: Van Clief source material used to check `pocket-clief` fidelity. LLM does not edit this folder after intake.
+- `van-clief-wiki/`: navigable body of Jake Van Clief's teachings — sources, concepts, entities, synthesis — used to check `pocket-clief` fidelity. See `van-clief-wiki/SCHEMA.md` for the page-type rulebook.
 - `plugins/`: the actual plugin sources. Not a workspace — editing routes through `skill-maintenance/`.
 
 GitHub hosts the issues at https://github.com/ZoranSpirkovski/skills-public/issues. Manage them with `gh issue` and the normal GitHub flow — there is no local issue mirror.
@@ -19,16 +19,16 @@ GitHub hosts the issues at https://github.com/ZoranSpirkovski/skills-public/issu
 | Edit an existing skill | `skill-maintenance/` | `skill-maintenance/CONTEXT.md`, target `plugins/<name>/skills/<name>/SKILL.md` | (none) |
 | Add a new plugin or skill | `skill-maintenance/` | `skill-maintenance/CONTEXT.md`, `plugins/pocket-clief/` as reference shape | `superpowers:writing-skills` |
 | Bump a plugin version | `skill-maintenance/` | `skill-maintenance/CONTEXT.md`, `plugins/<name>/.claude-plugin/plugin.json` | (none) |
-| Change `pocket-clief` (any edit) | `skill-maintenance/` | `skill-maintenance/CONTEXT.md`, `van-clief-wiki/CONTEXT.md`, relevant files under `van-clief-wiki/notes/` | `pocket-clief:pocket-clief` |
+| Change `pocket-clief` (any edit) | `skill-maintenance/` | `skill-maintenance/CONTEXT.md`, `van-clief-wiki/CONTEXT.md`, relevant pages under `van-clief-wiki/concepts/` and `van-clief-wiki/sources/` | `pocket-clief:pocket-clief` |
 | Implement a GitHub issue | `skill-maintenance/` | `skill-maintenance/CONTEXT.md`, issue body via `gh issue view <n>` | (none) |
-| Add Van Clief source material | `van-clief-wiki/` | `van-clief-wiki/CONTEXT.md` | (none) |
+| Add, edit, or lint a wiki page | `van-clief-wiki/` | `van-clief-wiki/CONTEXT.md`, `van-clief-wiki/SCHEMA.md`, `van-clief-wiki/index.md` | (none) |
 
 ## Naming conventions
 
 - Skill files: `plugins/<plugin>/skills/<skill>/SKILL.md`.
 - Plugin version: semver in `plugins/<plugin>/.claude-plugin/plugin.json`. Behavior change means at minimum a minor bump.
 - Issue close comment: `Addressed in <short-sha>.` The sha must exist on `main` before closing.
-- Van Clief source notes: `van-clief-wiki/notes/YYYY-MM-DD-<slug>.md`, each with a `source:` front-matter line naming the file in `van-clief-wiki/sources/` it cites.
+- Wiki pages: slug-based filenames under `van-clief-wiki/{sources,concepts,entities,synthesis}/`. Frontmatter schema defined in `van-clief-wiki/SCHEMA.md`; index is at `van-clief-wiki/index.md`; ingest log at `van-clief-wiki/log.md`.
 
 ## Rules (working discipline, revise as we learn)
 
@@ -36,5 +36,5 @@ GitHub hosts the issues at https://github.com/ZoranSpirkovski/skills-public/issu
 - Do not rename a workspace folder once it exists. Leave a stub pointer if you must.
 - Edits to `plugins/pocket-clief/` must be checked against `van-clief-wiki/` before shipping. This fidelity rule is scoped to `pocket-clief` only, not every skill.
 - Behavior-changing edits to a plugin require a version bump in the same push. One missed bump earlier had to be corrected after the fact; do not repeat.
-- `van-clief-wiki/sources/` is not LLM-edited after intake. Synthesis goes in `van-clief-wiki/notes/` and must cite a file in `sources/`.
+- Raw Van Clief transcripts are not in this repo; they live in the user's private `.wiki/raw/`. Source-page references to `.wiki/raw/*` paths resolve only in that private copy. The wiki pages here are synthesis, citations, and summary — all LLM-editable per `van-clief-wiki/SCHEMA.md`.
 - Keep this file under 50 lines. Every line re-loads on every prompt.
