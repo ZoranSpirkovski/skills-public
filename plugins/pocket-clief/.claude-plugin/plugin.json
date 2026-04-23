@@ -1,7 +1,7 @@
 {
   "name": "pocket-clief",
   "description": "Set up a Claude Code workspace using Jake Van Clief's folder architecture: root CLAUDE.md with a routing table, workspace subfolders with CONTEXT.md files, and naming conventions as a lightweight database.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Zoran Spirkovski"
   },
