@@ -87,7 +87,7 @@ Apply these without exception when scaffolding. They are the discipline that mak
 - **Skills load per-task via the routing table.** `[synthesis]` Never globally. If a skill belongs to every task, it belongs in Layer 1; if it belongs to one task, it goes in that row only.
 - **Workspace isolation is an explicit rule.** `[Van Clief]` For multi-client or multi-project setups, write the rule into `CLAUDE.md` verbatim: "Never reference one workspace's information inside another workspace's session." Do not assume Claude will infer it.
 - **Never rename a workspace folder once it exists.** `[Van Clief]` Renaming silently breaks every row in the routing table that points to it. If the name must change, leave a stub pointer in the old folder.
-- **Do not over-build before use.** `[Van Clief]` Resist the urge to define seven workspaces and a 30-row routing table upfront. Start minimal, grow when a real task exposes a gap. Over-building before use is a common failure mode of this method.
+- **Do not over-build before use.** `[Van Clief]` Resist the urge to define seven workspaces and a 30-row routing table upfront. Start minimal, grow when a real task exposes a gap. Over-building before use is Mistake #7 in the seven folder-architecture mistakes Van Clief catalogs in Foundation 3-3 ("build the whole system before using it"); source: `van-clief-wiki/sources/foundation-3-3-common-mistakes.md`.
 - **Sources are the user's.** `[Van Clief]` If the user has raw materials (transcripts, PDFs, recordings), keep them in one folder the LLM does not edit (`raw/` or similar). LLM output goes in sibling folders so the source of truth is always clear.
 
 ## Graduation path from the three-file starter
